@@ -10,7 +10,7 @@
   <div> {{ momentTitle }} </div>
   <inputlist :goalProp="creates"></inputlist>
   <input class="row input-wrap"
-         v-model.trim="newTodoText"
+         v-model="newTodoText"
          @keyup.enter="addTodo"
          placeholder="Add new goal">
   <button @click="addList()"> Submit </button>
@@ -26,6 +26,7 @@ import { db } from './firebase';
 var todosRef = db.ref('goals')
 
 var scoreRef = db.ref('scorecards/')
+var createRef = db.ref('newcard/')
 
 export default {
   components: {
@@ -44,8 +45,9 @@ export default {
   },
   methods: {
     addTodo: function() {
+      console.log()
       if (this.newTodoText) {
-        todosRef.push({
+        createRef.push({
           goal: this.newTodoText,
           complete: 0
         })
