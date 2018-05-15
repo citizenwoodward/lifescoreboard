@@ -1,17 +1,30 @@
 <template>
-	<div class="row">
-			<div class="row-goal"> 
-				<div> {{newGoal.goal}} </div> 
-			</div>
-			<div class="row-complete"> 
-			<div class="button-wrap">
+	<div>
+		
+		<div class="row-complete">
+		<div class="row-goal"> 
+			{{newGoal.goal}}
+		</div>
+	<div class="button-wrap">
 				<minus :goalProp="newGoal.complete" v-on:increment="incrementTotal" v-on:subtract="minusTotal"></minus> 
 				<add :goalProp="newGoal.complete" v-on:increment="incrementTotal" v-on:subtract="minusTotal"></add>
 			</div> 
 				<div class="complete"> {{newGoal.complete}} </div>
-			</div>			
-		</div>	
+				</div>
+	<!-- <div v-for="goal in newGoal" class="row">
 
+			<div class="row-goal"> 
+				<div> {{goal.goal}} </div> 
+			</div>
+			<div class="row-complete"> 
+			<div class="button-wrap">
+				<minus :goalProp="goal.complete" v-on:increment="incrementTotal" v-on:subtract="minusTotal"></minus> 
+				<add :goalProp="goal.complete" v-on:increment="incrementTotal" v-on:subtract="minusTotal"></add>
+			</div> 
+				<div class="complete"> {{goal.complete}} </div>
+			</div>			
+		</div>	 -->
+	</div>
 </template>
 
 <script>
@@ -61,20 +74,16 @@ import minus from './minus.vue'
 		display: flex;
 	}	
 
-	.row-complete div {
-		flex: .5
-	}
-
 	.button-wrap {
 
 	}
 
 	.complete {
-		    padding-right: 20px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    color: #0D47A1;
-    font-size: 40px;
+		padding-right: 20px;
+	    display: flex;
+	    align-items: center;
+	    font-weight: bold;
+	    color: #0D47A1;
+	    font-size: 40px;
 	}
 </style>

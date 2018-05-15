@@ -2,7 +2,7 @@
 	<div class="scorecard">
 		<div class="titledate">{{titleDate}}
 		</div>
-		<goallist :goalProp="goals"></goallist>
+		<goallist :goalProp="goals.goal"></goallist>
 	</div>
 </template>
 

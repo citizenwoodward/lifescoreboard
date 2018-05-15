@@ -17,7 +17,7 @@ import inputgoal from './inputgoal.vue'
 		name: 'inputist',
 		data() {
 			return {
-				tester: "hey",
+				title: "hey",
 				goals: this.goalProp
 				// goals: [
 				// 	{ goal: "Have a clean apartment", complete:0 },
@@ -27,7 +27,7 @@ import inputgoal from './inputgoal.vue'
 				// 	{ goal: "Go to bed early", complete:0 }
 				// ]
 			}
-		}
+		},
 	}
 </script>
 

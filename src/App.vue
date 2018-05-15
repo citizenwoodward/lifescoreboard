@@ -2,15 +2,17 @@
   <div id="app">
     <div class="header-main">{{ msg }}</div class="header-main">
    <!--  <signup></signup> -->
-
-    <createcard :goalProp="goalsRef" :titleProp="titleRef"></createcard>
-    <scorecard :goalProp="goalsRef" :titleProp="titleRef"></scorecard>
+   <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
+   <scoreboard :scoreProp="scoreRef"></scoreboard>
+  <!--   <createcard :goalProp="goalsRef" :titleProp="titleRef"></createcard>
+    <scorecard :goalProp="goalsRef" :titleProp="titleRef"></scorecard> -->
   </div>
 </template>
 
 <script>
 
 import signup from './signup.vue'
+import scoreboard from './scoreboard.vue'
 import scorecard from './scorecard.vue'
 import createcard from './createcard.vue'
 
@@ -18,36 +20,23 @@ import {db} from './firebase';
 var todosRef = db.ref('scorecards/0/title')
 
 export default {
-  components: { signup, scorecard, createcard},
+  components: { signup, scoreboard, createcard},
   name: 'app',
   data () {
     return {
       msg: 'Life Scoreboard',
-      newText: 'hey'
-      // goals: [
-      //     { goal: "Have a clean apartment", complete:0 },
-      //     { goal: "Go Outside", complete:0 },
-      //     { goal: "Exercise", complete:0 },
-      //     { goal: "Wake up early", complete:0 },
-      //     { goal: "Go to bed early", complete:0 }
-      //   ]
+      newText: 'hey',
+      createList: this.createRef
     }
   },
    firebase: function () {
     return {
-     goalsRef: db.ref('scorecards/0/goals'),
-     titleRef: {
-          source: db.ref('scorecards/0/title'),  
-          asObject: true}
+      scoreRef: db.ref('scorecards'),
+      createRef: db.ref('newcard'),
     }
   },
-computed: {
-      titleDate() {
-        return todosRef.child(goal['.key']).child('.value').set(newText)
-      }
-    },
   mounted: function() {
-      console.log(this.titleRef)
+      console.log(this.createRef)
     }
 }
 </script>
