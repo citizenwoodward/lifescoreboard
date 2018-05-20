@@ -4,7 +4,7 @@
     	<scorecard :goalProp="goalsRef" :titleProp="titleRef"></scorecard> -->
     	
     	<div v-for="board in boards">
-    		<scorecard2 :scoreProp="board"></scorecard2>
+    		<scorecard :scoreProp="board"></scorecard>
     	</div>
     	
 	</div>
@@ -19,11 +19,11 @@
 
 // import firebase from 'firebase'
 
-import scorecard2 from './scorecard2.vue'
+import scorecard from './scorecard.vue'
 import createcard from './createcard.vue'
 
 	export default {
-		components: {scorecard2, createcard},
+		components: {scorecard, createcard},
 		props: [ 'scoreProp'],
 		name: 'scoreboard',
 		data() {
