@@ -23,8 +23,6 @@ import moment from 'moment';
 import inputlist from './inputlist.vue';
 import { db } from './firebase';
 
-var todosRef = db.ref('goals')
-
 var scoreRef = db.ref('scorecards/')
 var createRef = db.ref('newcard/')
 
@@ -56,19 +54,24 @@ export default {
     },
     addList: function() {
 
-      const obj = this.creates
+      var obj = this.creates;
+
+
 
       for (var i = 0; i < obj.length; i++) {
-        delete obj[i]['.key']
+          
+        // console.log(obj)
+        obj[i].key = i
+
+        delete obj[i]['.key'];
+
+       console.log(obj[i])
       // console.log(obj[i]['.key'])
       }
 
-      console.log(obj)
+     console.log(obj)
 
       scoreRef.push({
-
-        // goal: this.newTodoText,
-        // complete: 0
         goals: obj,
         title: this.momentTitle
       })

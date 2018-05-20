@@ -5,7 +5,7 @@
 			<goallist :goalProp="goal.goals"></goallist>
 		</div> -->
 		<div class="titledate"> {{goals.title}} </div>
-		<goallist :goalProp="goals.goals"></goallist>
+		<goallist :goalProp="goals.goals" :keyProp="newKey"></goallist>
 	</div>
 </template>
 
@@ -23,6 +23,11 @@ import firebase from 'firebase'
 			return {
 				tester: "hey",
 				goals: this.scoreProp
+			}
+		},
+		computed: {
+			newKey: function() {
+				return this.goals['.key']
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 	<div>
 		<div class="scorecard" v-for="goal in goals">
 		
-			<goal :goalProp="goal"></goal>	
+			<goal :goalProp="goal" :keyProp="newKey"></goal>	
 			
 		</div>
 	</div>
@@ -15,13 +15,15 @@ import goal from './goal.vue'
 
 	export default {
 		components: {goal},
-		props: [ 'goalProp'],
+		props: [ 'goalProp', 'keyProp'],
 		name: 'goalist',
 		data() {
 			return {
-				goals: this.goalProp
+				goals: this.goalProp,
+				newKey: this.keyProp
 			}
 		}
+		
 	}
 </script>
 

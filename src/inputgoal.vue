@@ -12,7 +12,7 @@
 import add from './add.vue'
 import {db} from './firebase';
 
-var todosRef = db.ref('scorecards/0/goals')
+var todosRef = db.ref('newcard')
 
 import firebase from 'firebase'
 
@@ -37,6 +37,7 @@ import firebase from 'firebase'
 			methods: {
 			  updateGoal: function (goal, newText) {
 			  	console.log(goal)
+			  	delete todosRef.child(goal['.key'])
 			  	todosRef.child(goal['.key']).child('goal').set(newText)
 			  	
           		}
