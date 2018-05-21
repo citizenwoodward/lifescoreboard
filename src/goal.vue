@@ -54,14 +54,21 @@ export default {
       if (this.newGoal.complete === 0) {
         this.newGoal.complete += 0
       } else {
-        this.newGoal.complete -= 0.5
+        this.newGoal.complete -= 0.5;
+         var newRef = db.ref('scorecards/' + this.newKey + '/goals/' + this.newGoal.key)
+
+        console.log(newRef)
+
+        newRef.update({
+          complete: this.newGoal.complete
+        })
       }
 
     },
     incrementTotal: function() {
 
       if (this.newGoal.complete === 1) {
-        this.newGoal.complete += 0
+        this.newGoal.complete += 0;
       } else {
         this.newGoal.complete += 0.5
 
@@ -84,6 +91,8 @@ export default {
         // }
 
         var newRef = db.ref('scorecards/' + this.newKey + '/goals/' + this.newGoal.key)
+
+        console.log(newRef)
 
         newRef.update({
           complete: this.newGoal.complete

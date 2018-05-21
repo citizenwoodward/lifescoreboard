@@ -2,10 +2,13 @@
   <div id="app">
     <div class="header-main">{{ msg }}</div class="header-main">
    <!--  <signup></signup> -->
+ 
    <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
    <scoreboard :scoreProp="scoreRef"></scoreboard>
-  <!--   <createcard :goalProp="goalsRef" :titleProp="titleRef"></createcard>
-    <scorecard :goalProp="goalsRef" :titleProp="titleRef"></scorecard> -->
+
+
+   <stats :scoreProp="scoreRef"></stats>
+
   </div>
 </template>
 
@@ -15,12 +18,13 @@ import signup from './signup.vue'
 import scoreboard from './scoreboard.vue'
 import scorecard from './scorecard.vue'
 import createcard from './createcard.vue'
+import stats from './stats.vue'
 
 import {db} from './firebase';
 var todosRef = db.ref('scorecards/0/title')
 
 export default {
-  components: { signup, scoreboard, createcard},
+  components: { signup, scoreboard, createcard, stats},
   name: 'app',
   data () {
     return {

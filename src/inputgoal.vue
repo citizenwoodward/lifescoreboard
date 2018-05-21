@@ -3,7 +3,11 @@
 			<div class="row-goal"> 
 				<input v-model="goalProp.goal"  @blur="updateGoal(goalProp, $event.target.value)">
 			</div>
-				
+			<div @click="deleteGoal(goalProp)">
+				<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+					<path fill="#000000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+				</svg>
+			</div>	
 		</div>	
 
 </template>
@@ -12,7 +16,7 @@
 import add from './add.vue'
 import {db} from './firebase';
 
-var todosRef = db.ref('newcard')
+var createRef = db.ref('newcard')
 
 import firebase from 'firebase'
 
@@ -23,23 +27,18 @@ import firebase from 'firebase'
 			data() {
 				return {
 					newGoal: this.goalProp,
-					innerGoal: 0,
-					tododdd:todosRef
+					innerGoal: 0
 				}
 			},
-			 firebase: {
-			     goalsRef: {
-				      source: db.ref('scorecards/0/goals'),
-				      asObject: true
-				    },
-				   
-			  },
 			methods: {
-			  updateGoal: function (goal, newText) {
-			  	console.log(goal)
-			  	delete todosRef.child(goal['.key'])
-			  	todosRef.child(goal['.key']).child('goal').set(newText)
+			  	updateGoal: function (goal, newText) {
+				  	console.log(goal)
+				  	delete createRef.child(goal['.key'])
+				  	createRef.child(goal['.key']).child('goal').set(newText)
 			  	
+          		},
+          		deleteGoal: function(goal) {
+          			createRef.child(goal['.key']).remove()
           		}
 			}
 		}
