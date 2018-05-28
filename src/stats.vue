@@ -8,7 +8,7 @@
   <!-- {{firstStat}} -->
   Total Score: {{completeStat}} / {{completeStatTotal}} 
   <br> Goals:
-  <div v-for="goalStat in goalStat">  {{goalStat.name}}: {{goalStat.compo2}} /{{goalStat.numbo}} </div>
+  <div v-for="goalStat in goalStat">  {{goalStat.name}}: {{goalStat.compo}} /{{goalStat.numbo}}  - {{goalStat.compoPercent}}</div>
 </div>
 
 </template>
@@ -86,13 +86,9 @@ export default {
         }
       }
 
-      console.log(statsList)
-
       var lister = statsList.filter(function(elem, index, self) {
     		return index === self.indexOf(elem);
-		})
-
-      console.log(lister)
+		  })
 
       var outputList = [];
 
@@ -106,23 +102,19 @@ export default {
       function namecheck(name) {
       
         var numbo = 0
-        var compo = []
+        var compoList = []
         for (var i = 0; i < statsListTotal.length; i++) {
           
           var oldName = statsListTotal[i].name
 
           if (oldName == name) {
-            // console.log(name)
-            // console.log(statsListTotal[i].compo + statsListTotal[i].compo)
             numbo++;
-            compo.push(statsListTotal[i].compo)
+            compoList.push(statsListTotal[i].compo)
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
-            console.log(compo.reduce(reducer));
-            var compo2 = compo.reduce(reducer)
-            // statsList[i]++
-            // console.log(statsList[i])
-            // console.log(name + numbo);
-            outputer = {name, numbo, compo2};
+            var compo = compoList.reduce(reducer);
+            var compoPercent = compo / numbo;
+
+            outputer = {name, numbo, compo, compoPercent};
           }
         }
         outputList.push(outputer)
