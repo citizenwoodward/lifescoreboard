@@ -8,7 +8,7 @@
   <!-- {{firstStat}} -->
   Total Score: {{completeStat}} / {{completeStatTotal}} 
   <br> Goals:
-  <div v-for="goalStat in goalStat">  {{goalStat.name}}: {{goalStat.numbo}} </div>
+  <div v-for="goalStat in goalStat">  {{goalStat.name}}: {{goalStat.compo2}} /{{goalStat.numbo}} </div>
 </div>
 
 </template>
@@ -38,21 +38,6 @@ export default {
     }
   },
   methods: {
-    find_duplicate_in_array: function(arra1) {
-      console.log(arra1)
-      let i
-      const len = arra1.length
-      const result = []
-      const obj = {}
-      for (i = 0; i < len; i++) {
-        obj[arra1[i]] = 0
-      }
-      for (i in obj) {
-        result.push(i)
-      }
-      return result
-      console.log(result)
-    },
     goalStater: function(goalText) {
       var statsList = []
       var statsListTotal = []
@@ -86,14 +71,28 @@ export default {
       var result
       for (var i = 0; i < this.boards.length; i++) {
         for (var j = 0; j < this.boards[i].goals.length; j++) {
-       	console.log(this.boards[i].goals[j].complete)
-          statsListTotal.push(this.boards[i].goals[j].goal)
+       	  console.log(this.boards[i].goals[j].complete + this.boards[i].goals[j].goal)
+
+          var fill = this.boards[i].goals[j].goal;
+          var fill2 = this.boards[i].goals[j].complete; 
+          var obj = { name: "", compo: 0}
+          obj.name = fill;
+          obj.compo = fill2;
+          statsListTotal.push(obj)
+          statsList.push(fill)
+
+           // statsListTotal.push(this.boards[i].goals[j].goal)
+          
         }
       }
 
-      var lister = statsListTotal.filter(function(elem, index, self) {
+      console.log(statsList)
+
+      var lister = statsList.filter(function(elem, index, self) {
     		return index === self.indexOf(elem);
 		})
+
+      console.log(lister)
 
       var outputList = [];
 
@@ -105,14 +104,25 @@ export default {
       var outputList;
 
       function namecheck(name) {
-      	 
+      
         var numbo = 0
-        // console.log(name)
+        var compo = []
         for (var i = 0; i < statsListTotal.length; i++) {
-          if (statsListTotal[i] === name) {
+          
+          var oldName = statsListTotal[i].name
+
+          if (oldName == name) {
+            // console.log(name)
+            // console.log(statsListTotal[i].compo + statsListTotal[i].compo)
             numbo++;
+            compo.push(statsListTotal[i].compo)
+            const reducer = (accumulator, currentValue) => accumulator + currentValue;
+            console.log(compo.reduce(reducer));
+            var compo2 = compo.reduce(reducer)
+            // statsList[i]++
+            // console.log(statsList[i])
             // console.log(name + numbo);
-            outputer = {name, numbo};
+            outputer = {name, numbo, compo2};
           }
         }
         outputList.push(outputer)
