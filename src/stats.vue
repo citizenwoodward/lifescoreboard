@@ -8,7 +8,7 @@
   <!-- {{firstStat}} -->
   Total Score: {{completeStat}} / {{completeStatTotal}} 
   <br> Goals:
-  <div v-for="goalStat in goalStat">  {{goalStat.name}}: {{goalStat.compo}} /{{goalStat.numbo}}  - {{goalStat.compoPercent}}</div>
+  <div v-for="goalStat in goalStat">  {{goalStat.name}}: {{goalStat.compo}} / {{goalStat.numbo}}  - {{goalStat.compoOutput}}</div>
 </div>
 
 </template>
@@ -71,7 +71,7 @@ export default {
       var result
       for (var i = 0; i < this.boards.length; i++) {
         for (var j = 0; j < this.boards[i].goals.length; j++) {
-       	  console.log(this.boards[i].goals[j].complete + this.boards[i].goals[j].goal)
+       	  // console.log(this.boards[i].goals[j].complete + this.boards[i].goals[j].goal)
 
           var fill = this.boards[i].goals[j].goal;
           var fill2 = this.boards[i].goals[j].complete; 
@@ -80,9 +80,6 @@ export default {
           obj.compo = fill2;
           statsListTotal.push(obj)
           statsList.push(fill)
-
-           // statsListTotal.push(this.boards[i].goals[j].goal)
-          
         }
       }
 
@@ -112,9 +109,19 @@ export default {
             compoList.push(statsListTotal[i].compo)
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
             var compo = compoList.reduce(reducer);
-            var compoPercent = compo / numbo;
+         
+            var compoPercent = compo / numbo * 100;
+            var compoString = compoPercent.toString();
+            if (compoString == "100") {
+               var compoCut = compoString.slice(0,3); 
+            }
+            else {
+               var compoCut = compoString.slice(0,2); 
+            }
+           
+            var compoOutput = compoCut + "%";
 
-            outputer = {name, numbo, compo, compoPercent};
+            outputer = {name, numbo, compo, compoOutput};
           }
         }
         outputList.push(outputer)
