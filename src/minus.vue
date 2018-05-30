@@ -6,7 +6,7 @@
 
 <script>
 	export default {
-			name: 'addButton',
+			name: 'subButton',
 			props: [ 'goalProp'],
 			data() {
 				return {

@@ -3,12 +3,12 @@
     <div class="header-main">{{ msg }}</div class="header-main">
    <!--  <signup></signup> -->
  
-   <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
-   <scoreboard :scoreProp="scoreRef"></scoreboard>
-
-
-   <stats :scoreProp="scoreRef"></stats>
-
+   <signup v-on:signin="getUser"></signup>
+   <div v-if="user">
+     <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
+     <scoreboard :scoreProp="scoreRef"></scoreboard>
+     <stats :scoreProp="scoreRef"></stats>  
+  </div>
   </div>
 </template>
 
@@ -30,13 +30,19 @@ export default {
     return {
       msg: 'Life Scoreboard',
       newText: 'hey',
-      createList: this.createRef
+      createList: this.createRef,
+      user: ''
     }
   },
    firebase: function () {
     return {
       scoreRef: db.ref('scorecards'),
       createRef: db.ref('newcard'),
+    }
+  },
+  methods: {
+    getUser: function(user) {
+      this.user = user;
     }
   },
   mounted: function() {
