@@ -1,6 +1,7 @@
 <template>
 <div class="sign-up">
   <button v-on:click="signUpWithGoogle">Sign in with Google </button>
+  <button v-on:click="signOut">Sign Out </button>
 </div>
 
 </template>
@@ -59,6 +60,13 @@ export default {
         var credential = error.credential
       // ...
       })
+    },
+    signOut: function() {
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+      }).catch(function(error) {
+        // An error happened.
+      });
     },
     authWatcher: function() {
       var vueLocal = this
