@@ -21,7 +21,8 @@ import createcard from './createcard.vue'
 import stats from './stats.vue'
 
 import {db} from './firebase';
-var todosRef = db.ref('scorecards/0/title')
+var todosRef = db.ref('scorecards/0/title');
+var usersRef = db.ref("users");
 
 export default {
   components: { signup, scoreboard, createcard, stats},
@@ -31,7 +32,11 @@ export default {
       msg: 'Life Scoreboard',
       newText: 'hey',
       createList: this.createRef,
-      user: ''
+      user: {
+        email: '',
+        name: '',
+        userID: ''
+      }
     }
   },
    firebase: function () {
@@ -42,8 +47,10 @@ export default {
   },
   methods: {
     getUser: function(user) {
-      this.user = user;
-    }
+      this.user.email = user.email,
+      this.user.name = user.displayName  
+      this.user.userID = user.uid 
+      }
   },
   mounted: function() {
       console.log(this.createRef)

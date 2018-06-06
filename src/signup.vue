@@ -9,6 +9,9 @@
 <script>
 import firebase from 'firebase';
 
+import {db} from './firebase';
+var usersRef = db.ref("users");
+
 var provider = new firebase.auth.GoogleAuthProvider()
 
 
@@ -16,10 +19,11 @@ export default {
   name: 'signUp',
   data: function() {
     return {
-      email: '',
-      password: '',
-      userID: '',
-      userToken: ''
+      user: {
+        email: '',
+        name: '',
+        userID: ''
+      }
     }
   },
   mounted: function() {
@@ -43,11 +47,6 @@ export default {
         // The signed-in user info.
         var user = result.user
 
-        console.log('hey')
-        console.log(token, user)
-
-        this.userID = user
-        this.userToken = token
       // ...
       }).catch(function(error) {
         console.log('error my dude')
@@ -74,7 +73,14 @@ export default {
         if (user) {
           console.log('heydd')
           console.log(user)
-          vueLocal.$emit('signin', user)
+          vueLocal.user.email = user.email,
+          vueLocal.user.name = user.displayName  
+          vueLocal.user.userID = user.uid 
+
+          
+          usersRef.child(user.uid).set(vueLocal.user);
+
+          vueLocal.$emit('signin', vueLocal.user)
         // User is signed in.
         } else {
           console.log('else')
