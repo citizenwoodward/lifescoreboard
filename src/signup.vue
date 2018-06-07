@@ -71,12 +71,10 @@ export default {
       var vueLocal = this
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          console.log('heydd')
           console.log(user)
           vueLocal.user.email = user.email,
           vueLocal.user.name = user.displayName  
           vueLocal.user.userID = user.uid 
-
           
           usersRef.child(user.uid).set(vueLocal.user);
 

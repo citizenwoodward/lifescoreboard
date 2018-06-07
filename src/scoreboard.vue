@@ -3,7 +3,7 @@
 		<!-- <createcard :goalProp="goalsRef" :titleProp="titleRef"></createcard>
     	<scorecard :goalProp="goalsRef" :titleProp="titleRef"></scorecard> -->
     	
-    	<div v-for="board in boards">
+    	<div v-for="board in reverseBoards">
     		<scorecard :scoreProp="board"></scorecard>
     	</div>
     	
@@ -32,11 +32,9 @@ import createcard from './createcard.vue'
 			}
 		},
 		computed: {
-			allBoards() {
-				for(var i = 0; i < this.scoreProp.length; i++) {
-					return this.scoreProp[i].title
-				}
-			}
+			reverseBoards() {
+        	return this.boards.slice().reverse();
+ 		 }    
 
 			// titleDate() {
 	
