@@ -2,13 +2,22 @@
   <div id="app">
     <div class="header-main">{{ msg }}</div class="header-main">
    <!--  <signup></signup> -->
+
+     <p>
+    <router-link to="/createcard">Create A Scorecard</router-link>
+    <router-link to="/scorecards">Scorecards</router-link>
+    <router-link to="/stats">Stats</router-link>
+
+  </p>
  
    <signup v-on:signin="getUser"></signup>
-   <div v-if="user">
-     <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
-     <scoreboard :scoreProp="scoreRef"></scoreboard>
-     <stats :scoreProp="scoreRef"></stats>  
-  </div>
+    <!--  <router-view></router-view> -->
+     <div v-if="user">
+      <router-view :scoreProp="scoreRef" :createProp="createRef"></router-view>
+      <!--  <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
+       <scoreboard :scoreProp="scoreRef"></scoreboard>
+       <stats :scoreProp="scoreRef"></stats>   -->
+    </div>
   </div>
 </template>
 
@@ -26,7 +35,7 @@ var usersRef = db.ref("users");
 
 export default {
   components: { signup, scoreboard, createcard, stats},
-  name: 'app',
+  name: 'App',
   data () {
     return {
       msg: 'Life Scoreboard',
