@@ -1,14 +1,11 @@
 <template>
   <div id="app">
-    <div class="header-main">{{ msg }}</div class="header-main">
+    <div class="header-main">{{ msg }}
+     <navbar></navbar>
+     </div>
    <!--  <signup></signup> -->
 
-     <p>
-    <router-link to="/createcard">Create A Scorecard</router-link>
-    <router-link to="/scorecards">Scorecards</router-link>
-    <router-link to="/stats">Stats</router-link>
-
-  </p>
+   
  
    <signup v-on:signin="getUser"></signup>
     <!--  <router-view></router-view> -->
@@ -23,6 +20,7 @@
 
 <script>
 
+import navbar from './navBar.vue'
 import signup from './signup.vue'
 import scoreboard from './scoreboard.vue'
 import scorecard from './scorecard.vue'
@@ -34,7 +32,7 @@ var todosRef = db.ref('scorecards/0/title');
 var usersRef = db.ref("users");
 
 export default {
-  components: { signup, scoreboard, createcard, stats},
+  components: { navbar, signup, scoreboard, createcard, stats},
   name: 'App',
   data () {
     return {
@@ -127,7 +125,7 @@ a {
   font-size: 2em;
   padding: 20px 0 5px 0;
   background-color: #2196F3;
-  margin-bottom: 20px;
+/*  margin-bottom: 20px;*/
   color: white;
 }
 
