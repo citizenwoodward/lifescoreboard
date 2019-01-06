@@ -30,8 +30,6 @@ export default {
   data () {
     return {
       msg: 'Life Scoreboard',
-      newText: 'hey',
-      createList: this.createRef,
       user: {
         email: '',
         name: '',
@@ -43,11 +41,12 @@ export default {
     return {
       scoreRef: db.ref('scorecards'),
       createRef: db.ref('newcard'),
+      newRef: db.ref('newcards')
     }
   },
   methods: {
     getUser: function(user) {
-      this.user.email = user.email,
+      this.user.email = user.email
       this.user.name = user.displayName  
       this.user.userID = user.uid 
       }

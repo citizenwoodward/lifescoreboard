@@ -11,6 +11,7 @@ import firebase from 'firebase';
 
 import {db} from './firebase';
 var usersRef = db.ref("users");
+var newCardRef = db.ref("newcards");
 
 var provider = new firebase.auth.GoogleAuthProvider()
 
@@ -23,6 +24,10 @@ export default {
         email: '',
         name: '',
         userID: ''
+      },
+      templateCard: {
+        0: {goal: "Goal 1", complete: 0},
+        1: {goal: "Goal 2", complete: 0}
       }
     }
   },
@@ -71,13 +76,14 @@ export default {
       var vueLocal = this
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          console.log('heydd')
           console.log(user)
           vueLocal.user.email = user.email,
           vueLocal.user.name = user.displayName  
           vueLocal.user.userID = user.uid 
 
           
+          newCardRef.child(user.uid).set(vueLocal.templateCard)
+
           usersRef.child(user.uid).set(vueLocal.user);
 
           vueLocal.$emit('signin', vueLocal.user)
