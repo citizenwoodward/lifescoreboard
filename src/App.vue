@@ -1,19 +1,26 @@
 <template>
   <div id="app">
-    <div class="header-main">{{ msg }}</div class="header-main">
+    <div class="header-main">{{ msg }}
+     <navbar></navbar>
+     </div>
    <!--  <signup></signup> -->
+
+   
  
    <signup v-on:signin="getUser"></signup>
-   <div v-if="user">
-     <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
-     <scoreboard :scoreProp="scoreRef"></scoreboard>
-     <stats :scoreProp="scoreRef"></stats>  
-  </div>
+    <!--  <router-view></router-view> -->
+     <div v-if="user">
+      <router-view :scoreProp="scoreRef" :createProp="createRef"></router-view>
+      <!--  <createcard :createProp="createRef" :scoreProp="scoreRef"></createcard>
+       <scoreboard :scoreProp="scoreRef"></scoreboard>
+       <stats :scoreProp="scoreRef"></stats>   -->
+    </div>
   </div>
 </template>
 
 <script>
 
+import navbar from './navBar.vue'
 import signup from './signup.vue'
 import scoreboard from './scoreboard.vue'
 import scorecard from './scorecard.vue'
@@ -25,8 +32,8 @@ var todosRef = db.ref('scorecards/0/title');
 var usersRef = db.ref("users");
 
 export default {
-  components: { signup, scoreboard, createcard, stats},
-  name: 'app',
+  components: { navbar, signup, scoreboard, createcard, stats},
+  name: 'App',
   data () {
     return {
       msg: 'Life Scoreboard',
@@ -117,7 +124,7 @@ a {
   font-size: 2em;
   padding: 20px 0 5px 0;
   background-color: #2196F3;
-  margin-bottom: 20px;
+/*  margin-bottom: 20px;*/
   color: white;
 }
 

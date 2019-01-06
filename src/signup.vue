@@ -80,7 +80,6 @@ export default {
           vueLocal.user.email = user.email,
           vueLocal.user.name = user.displayName  
           vueLocal.user.userID = user.uid 
-
           
           newCardRef.child(user.uid).set(vueLocal.templateCard)
 
