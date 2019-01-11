@@ -51,22 +51,13 @@ import createcard from './createcard.vue'
 
 
 <style scoped>
-	.scorecard {
-		/*width: 80%;*/
-	    margin: 0 20px;
-	    border-radius: 20px;
-	    /*border: 2px solid #7F7E7E;*/
-	    background: white;
-	    color: black;
-	    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	}
 
 	.titledate {
 		color: #0D47A1;
 		font-weight: bold;
 		font-size: 16px;
 		padding: 10px 0px;
-		    border-bottom: 1px solid #7F7E7E;
+		border-bottom: 1px solid #7F7E7E;
 	}
 
 /*	

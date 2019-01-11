@@ -17,9 +17,9 @@ const router = new VueRouter({
   history: true,
   routes: [
       { path: '/', name:'base', component: app},
-        { path: '/createcard', name: 'createCard', component: createcard },
-        { path: '/scorecards', name: 'scorecards', component: scoreboard},
-        { path: '/stats', name: 'stats', component: stats }    
+        { path: '/createcard', name: 'Create A Card', component: createcard },
+        { path: '/scorecards', name: 'Scorecards', component: scoreboard},
+        { path: '/stats', name: 'Stats', component: stats }    
       
     ]
 });

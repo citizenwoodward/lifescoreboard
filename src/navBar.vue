@@ -1,14 +1,14 @@
 <template>
 	<div class="route-wrap">
-	    <router-link to="/createcard">Create A Scorecard <svg style="position:relative;left:5px;top:5px;width:24px;height:24px"
+	    <router-link to="/createcard"> <span class="nav-title"> Create A Scorecard </span> <svg style="position:relative;left:5px;top:5px;width:24px;height:24px"
          viewBox="0 0 24 24">
       <path fill="#ffffff"
             d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,	17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
     </svg> </router-link>
-	    <router-link to="/scorecards">Scorecards <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+	    <router-link to="/scorecards"> <span class="nav-title"> Scorecards </span> <svg style="width:24px;height:24px" viewBox="0 0 24 24">
     <path fill="#ffffff" d="M5,2H19A1,1 0 0,1 20,3V13A1,1 0 0,1 19,14H5A1,1 0 0,1 4,13V3A1,1 0 0,1 5,2M6,4V12H18V4H6M20,17A1,1 0 0,1 19,18H5A1,1 0 0,1 4,17V16H20V17M20,21A1,1 0 0,1 19,22H5A1,1 0 0,1 4,21V20H20V21Z" />
 </svg></router-link>
-	    <router-link to="/stats">Stats
+	    <router-link to="/stats"> <span class="nav-title"> Stats </span>
 
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
 <g id="Layer_1">
@@ -43,6 +43,11 @@
 		margin-top: 10px;
 		display: flex;
 		justify-content: space-around;
+		background-color: #2196F3;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		padding:15px 0;
 		/*margin: 0 20px;*/
 	}
 
@@ -51,6 +56,10 @@
 		text-decoration: none;
 	}
 	.st0{fill:#FFFFFF;}
+
+	.nav-title {
+		display: none;
+	}
 
 
 </style>

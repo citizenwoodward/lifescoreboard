@@ -4,14 +4,14 @@
     <div class="row-goal">
       {{newGoal.goal}}
     </div>
-    <div class="button-wrap">
+   <!--  <div class="button-wrap">
       <minus :goalProp="newGoal.complete"
              v-on:increment="incrementTotal"
              v-on:subtract="minusTotal"></minus>
       <add :goalProp="newGoal.complete"
            v-on:increment="incrementTotal"
            v-on:subtract="minusTotal"></add>
-    </div>
+    </div> -->
     <div class="complete"> {{newGoal.complete}} </div>
   </div>
 </div>
@@ -118,13 +118,14 @@ export default {
 
 .row-goal {
   flex: 1;
-  justify-content: center;
-  flex-direction: column;
-  display: flex;
-  font-size: 16px;
-  line-height: 17px;
-  text-align: left;
-  margin-left: 10px;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    font-size: 18px;
+    line-height: 17px;
+    text-align: left;
+    margin-left: 10px;
+    font-weight: 500;
 }
 
 .row-complete {
@@ -136,13 +137,16 @@ export default {
 .button-wrap {}
 
 .complete {
-  padding-right: 20px;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  color: #0D47A1;
-  font-size: 40px;
-  width: 50px;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #0D47A1;
+    font-size: 32px;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    border: 1px solid #7e7e7e;
+    margin: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 </style>

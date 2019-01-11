@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header-main">{{ msg }}
-     <navbar></navbar>
+     
      </div>
    <!--  <signup></signup> -->
 
@@ -15,6 +15,7 @@
        <scoreboard :scoreProp="scoreRef"></scoreboard>
        <stats :scoreProp="scoreRef"></stats>   -->
     </div>
+    <navbar></navbar>
   </div>
 </template>
 
@@ -60,6 +61,17 @@ export default {
   },
   mounted: function() {
       console.log(this.createRef)
+      
+    },
+  updated: function() {
+    this.msg = this.$router.currentRoute.name
+  },
+    computed:  {
+      msg2() {
+        
+        return this.$router.currentRoute.name
+        // return this.msg
+      }
     }
 }
 </script>
@@ -116,6 +128,11 @@ a {
 }
 .row-center {
   display: flex;
+  justify-content: center;
+}
+.column-center {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 

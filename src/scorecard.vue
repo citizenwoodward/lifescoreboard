@@ -4,11 +4,13 @@
 			{{goal.title}}
 			<goallist :goalProp="goal.goals"></goallist>
 		</div> -->
-		<div class="titledate"> {{goals.title}} </div>
-		<div @click="deleteGoal(goals)">
-			<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-				<path fill="#000000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
-			</svg>
+		<div class="top-wrap"> 
+			<div class="titledate"> {{goals.title}} </div>
+			<div class="card-delete column-center" @click="deleteGoal(goals)">
+				<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+					<path fill="#000000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+				</svg>
+			</div>
 		</div>	
 		<goallist :goalProp="goals.goals" :keyProp="newKey"></goallist>
 	</div>
@@ -59,13 +61,25 @@ var scoreRef = db.ref('scorecards/')
 	    color: black;
 	    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	}
+	
+	.top-wrap {
+		display: flex;
+	}
 
 	.titledate {
 		color: #0D47A1;
 		font-weight: bold;
-		font-size: 18px;
+		font-size: 22px;
 		padding: 10px 0px;
+		width: 100%;
+		text-align: center;
 		/*border-bottom: 1px solid #7F7E7E;*/
+	}
+
+	.card-delete {
+		/*position: absolute;*/
+		right:20px;
+		margin-right: 20px;
 	}
 
 </style>
