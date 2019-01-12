@@ -99,6 +99,19 @@ export default {
 </script>
 
 <style scoped="">
+
+.sign-up {
+  position: fixed;
+    display: flex;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    background-color: #2196F3;
+    bottom: 61px;
+    right: 0;
+    padding: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
 .signUp {
   margin-top: 40px;
 }
@@ -110,8 +123,9 @@ input {
 }
 
 button {
-  margin-top: 10px;
   cursor: pointer;
+  font-size: 15px;
+  color: white
 }
 
 span {

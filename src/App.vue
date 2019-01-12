@@ -7,7 +7,7 @@
 
    
  
-   <signup v-on:signin="getUser"></signup>
+   <signup v-on:signin="getUser" v-if="signOn"></signup>
     <!--  <router-view></router-view> -->
      <div v-if="user">
       <router-view :scoreProp="scoreRef" :createProp="createRef"></router-view>
@@ -15,7 +15,7 @@
        <scoreboard :scoreProp="scoreRef"></scoreboard>
        <stats :scoreProp="scoreRef"></stats>   -->
     </div>
-    <navbar></navbar>
+    <navbar v-on:signdis="tester"></navbar>
   </div>
 </template>
 
@@ -38,6 +38,7 @@ export default {
   data () {
     return {
       msg: 'Life Scoreboard',
+      signOn: false,
       user: {
         email: '',
         name: '',
@@ -54,10 +55,14 @@ export default {
   },
   methods: {
     getUser: function(user) {
+      console.log(user)
       this.user.email = user.email
-      this.user.name = user.displayName  
-      this.user.userID = user.uid 
-      }
+      this.user.name = user.name  
+      this.user.userID = user.userID 
+      },
+    tester: function() {
+      this.signOn = !this.signOn;
+    }
   },
   mounted: function() {
       console.log(this.createRef)
@@ -94,12 +99,19 @@ input {
   background: none;
   border: none;
   outline: none;
-  font-size: 12px;
+  font-size: 15px;
+}
+
+input::placeholder {
+  color:#0D47A1;
+  font-size: 15px;
+  padding-bottom: 4px;
 }
 
 .input-wrap {
-  padding: 15px 0 2px 0;
-  border-bottom: 1px solid #7F7E7E;
+  width: 100%;
+  padding: 15px 0 0 0;
+  border-bottom: 1px solid #2196F3;
 }
 
 .input-wrap:first-child {
@@ -147,8 +159,8 @@ a {
 
 .header1 {
   font-weight: bold;
-  text-align: left;
-  font-size: 18px;
+  text-align: center;
+  font-size: 24px;
 }
 
 

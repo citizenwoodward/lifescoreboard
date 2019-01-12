@@ -141,12 +141,24 @@ export default {
     align-items: center;
     font-weight: bold;
     color: #0D47A1;
-    font-size: 32px;
+    font-size: 30px;
     width: 60px;
     height: 60px;
     justify-content: center;
-    border: 1px solid #7e7e7e;
-    margin: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-left: 1px solid #7e7e7e;
+    box-sizing: border-box;
+    box-shadow: -5px 0px 5px rgba(0,0,0,0.12);
 }
+
+display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #0D47A1;
+    font-size: 27px;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    border-left: 1px solid #7e7e7e;
+    box-sizing: border-box;
+    box-shadow: -5px 0px 5px rgba(0,0,0,0.12);
 </style>

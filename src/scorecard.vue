@@ -53,9 +53,8 @@ var scoreRef = db.ref('scorecards/')
 <style scoped>
 	.scorecard {
 		/*width: 80%;*/
-	    margin: 0 20px;
-	    margin-bottom: 20px;
-	    border-radius: 20px;
+	    margin: 20px;
+	    border-radius: 10px;
 	    /*border: 2px solid #7F7E7E;*/
 	    background: white;
 	    color: black;

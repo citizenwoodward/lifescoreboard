@@ -93,10 +93,21 @@ export default {
 <style scoped="">
 .createcard {
   margin: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .newgoal {
   border-bottom: 2px solid black;
+}
+
+button {
+  background-color: #0D47A1;
+  padding:10px 20px;
+  color:white;
+  border: none;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin: 20px 0;
+
 }
 </style>
